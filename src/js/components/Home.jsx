@@ -9,8 +9,7 @@ const Home = () => {
 		else if (selectedColor === "yellow") setSelectedColor("green");
 		else if (selectedColor === "green") {
 			if (showPurple) setSelectedColor("purple");
-			else setSelectedColor("red");
-		} 
+			else setSelectedColor("red");} 
 		else if (selectedColor === "purple") setSelectedColor("red");
 	};
 

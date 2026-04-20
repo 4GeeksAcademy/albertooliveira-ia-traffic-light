@@ -2,13 +2,16 @@ import React, { useState } from "react";
 
 const Home = () => {
 	const [selectedColor, setSelectedColor] = useState("red");
+	const [showPurple, setShowPurple] = useState(false);
 
 	const cycleColors = () => {
 		if (selectedColor === "red") setSelectedColor("yellow");
-		else if (selectedColor === "yellow") setSelectedColor("orange");
-		else if (selectedColor === "orange") setSelectedColor("green");
-		else if (selectedColor === "green") setSelectedColor("purple");
-		else setSelectedColor("red");
+		else if (selectedColor === "yellow") setSelectedColor("green");
+		else if (selectedColor === "green") {
+			if (showPurple) setSelectedColor("purple");
+			else setSelectedColor("red");
+		} 
+		else if (selectedColor === "purple") setSelectedColor("red");
 	};
 
 	return (
@@ -26,24 +29,27 @@ const Home = () => {
 				></div>
 
 				<div
-					onClick={() => setSelectedColor("orange")}
-					className={`light orange ${selectedColor === "orange" ? "selected" : ""}`}
-				></div>
-
-				<div
 					onClick={() => setSelectedColor("green")}
 					className={`light green ${selectedColor === "green" ? "selected" : ""}`}
 				></div>
 
-				<div
-					onClick={() => setSelectedColor("purple")}
-					className={`light purple ${selectedColor === "purple" ? "selected" : ""}`}
-				></div>
+				{showPurple && (
+					<div
+						onClick={() => setSelectedColor("purple")}
+						className={`light purple ${selectedColor === "purple" ? "selected" : ""}`}
+					></div>
+				)}
 			</div>
 
-			<button className="btn btn-primary mt-5" onClick={cycleColors}>
-				Alternar Color
-			</button>
+			<div className="d-flex flex-column align-items-center gap-2 mt-5">
+				<button className="btn btn-primary" onClick={cycleColors}>
+					Alternar Color
+				</button>
+				
+				<button className="btn btn-info" onClick={() => setShowPurple(!showPurple)}>
+					{showPurple ? "Esconder Púrpura" : "Añadir Púrpura"}
+				</button>
+			</div>
 		</div>
 	);
 };

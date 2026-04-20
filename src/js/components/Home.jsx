@@ -5,7 +5,8 @@ const Home = () => {
 
 	const cycleColors = () => {
 		if (selectedColor === "red") setSelectedColor("yellow");
-		else if (selectedColor === "yellow") setSelectedColor("green");
+		else if (selectedColor === "yellow") setSelectedColor("orange");
+		else if (selectedColor === "orange") setSelectedColor("green");
 		else if (selectedColor === "green") setSelectedColor("purple");
 		else setSelectedColor("red");
 	};
@@ -13,7 +14,6 @@ const Home = () => {
 	return (
 		<div className="text-center mt-5">
 			<div id="trafficTop"></div>
-
 			<div id="container">
 				<div
 					onClick={() => setSelectedColor("red")}
@@ -23,6 +23,11 @@ const Home = () => {
 				<div
 					onClick={() => setSelectedColor("yellow")}
 					className={`light yellow ${selectedColor === "yellow" ? "selected" : ""}`}
+				></div>
+
+				<div
+					onClick={() => setSelectedColor("orange")}
+					className={`light orange ${selectedColor === "orange" ? "selected" : ""}`}
 				></div>
 
 				<div
